@@ -38,7 +38,6 @@ class FarmerServiceMockitoTest {
 	}
 
 	@Test
-	@Disabled
 	void testAddFarmer(){
 		Farmer farmer = new Farmer("Preeti","6703323213","preeti@gmail.com","2133 4523 2111","LLM121");
 		
@@ -67,7 +66,6 @@ class FarmerServiceMockitoTest {
 	}
 	
 	@Test
-	@Disabled
 	void testRetrieveAllFarmers() {
         Farmer farmer1 = new Farmer("Preeti","6703323213","preeti@gmail.com","2133 4523 2111","LLM121");
 		
@@ -99,7 +97,6 @@ class FarmerServiceMockitoTest {
 	}
 	
 	@Test
-	@Disabled
 	void testRetrieveFarmerById() {
 		 Farmer farmer = new Farmer("Preeti","6703323213","preeti@gmail.com","2133 4523 2111","LLM121");
 			
@@ -127,7 +124,6 @@ class FarmerServiceMockitoTest {
 	}
 	
 	@Test
-	@Disabled
 	void testUpdateFarmer()  {
 		 Farmer farmer = new Farmer("Preeti","6703323213","preeti11@gmail.com","2133 4523 2111","LLM121");
 			
@@ -156,7 +152,6 @@ class FarmerServiceMockitoTest {
 	}
 	
 	@Test
-	@Disabled
 	void testDeleteFarmerById() {
 		
 		Farmer farmer = new Farmer("Preeti","6703323213","preeti11@gmail.com","2133 4523 2111","LLM121");
