@@ -36,7 +36,6 @@ public class BidServiceImpl implements IBidService {
 		if(!opt.isPresent()) {
 			return null;
 		}
-		
 		return opt.get();
 	}
 
