@@ -24,16 +24,14 @@ public class Bid {
 	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinColumn(name="crop",referencedColumnName="cropId")
 	private Crop crop;
-	//private Object localDate;
+	
 	
 	
 	public Bid() {}
-	public Bid(int bidId, String dateOfBidding, Farmer farmer, Crop crop) {
-		super();
+	public Bid(int bidId, String dateOfBidding) {
 		this.bidId = bidId;
 		this.dateOfBidding = dateOfBidding;
-		this.farmer = farmer;
-		this.crop = crop;
+		
 	}
 
 

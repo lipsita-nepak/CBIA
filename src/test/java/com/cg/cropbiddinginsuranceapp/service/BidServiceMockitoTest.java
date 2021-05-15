@@ -25,22 +25,17 @@ import com.cg.cropbiddinginsuranceapp.repository.IBidRepository;
 
 @ExtendWith(SpringExtension.class)
 class BidServiceMockitoTest {
-		// @InjectMock - injects bidService and inject dependent classes/interfaces 
-		//that are annotated with @Mock
-	
+		
 	@InjectMocks
-	BidSeviceImpl bidService; 
+	BidServiceImpl bidService; 
 	
-	// @MockBean - injecting external services
-	@MockBean
+		@MockBean
 	IBidRepository bidRepo;
-	//Initialization of MockTests
 	
 	@BeforeEach
 	void init() {
 	MockitoAnnotations.openMocks(this);
 	}
-	
 	@Test
 	
 	void testCreateBid() {
@@ -61,7 +56,7 @@ Farmer farmer = new Farmer("Preeti","6703323213","preeti@gmail.com","2133 4523 2
 		farmer.setFarmAddress(farmAddress);
 		farmer.setBankDetails(account);
 		Crop c=new Crop(104, "cash", "paddy", "clayloam", 1800.0,50.0);
-			Bid bid = new Bid(1001,"2022-05-15",farmer,c);
+			Bid bid = new Bid(1001,"2022-05-15");
 			
 			Mockito.when(bidRepo.save(bid)).thenReturn(bid);
 			Bid persistedBid = bidService.save(bid);
@@ -86,10 +81,9 @@ Farmer farmer = new Farmer("Preeti","6703323213","preeti@gmail.com","2133 4523 2
 			farmer.setFarmAddress(farmAddress);
 			farmer.setBankDetails(account);
 			Crop c=new Crop(104, "cash", "paddy", "clayloam", 1800.0,50.0);
-		Bid bid = new Bid(20,"2022-05-15",farmer,c);
+		Bid bid = new Bid(20,"2022-05-15");
 		Mockito.when(bidRepo.findById(20)).thenReturn(Optional.of(bid));
-		//bid.setBidId(1001);
-	//	bid.setDateOfBidding("2022-05-15");
+		
 		Bid persistedBid = bidService.findByBidId(20);
 		assertEquals(20,persistedBid.getBidId());
 }
@@ -113,11 +107,10 @@ Farmer farmer = new Farmer("Preeti","6703323213","preeti@gmail.com","2133 4523 2
 		farmer.setFarmAddress(farmAddress);
 		farmer.setBankDetails(account);
 		Crop c=new Crop(104, "cash", "paddy", "clayloam", 1800.0,50.0);
-		Bid bid = new Bid(20,"2022-05-15",farmer,c);
-		//bidService.deleteByBidId(1001);
+		Bid bid = new Bid(20,"2022-05-15");
+		
 		Mockito.when(bidRepo.findById(20)).thenReturn(Optional.of(bid));
-		//bidRepo.deleteById(20);
-		//Bid persistedBid = bidService.deleteByBidId(20);
+	
 		Bid persistedBid = bidService.deleteByBidId(20);
 		assertEquals(20,bid.getBidId());
 		
@@ -143,13 +136,12 @@ Farmer farmer = new Farmer("Preeti","6703323213","preeti@gmail.com","2133 4523 2
 			farmer.setFarmAddress(farmAddress);
 			farmer.setBankDetails(account);
 			Crop c=new Crop(104, "cash", "rice", "clayloam", 1800.0,50.0);
-			Bid bid = new Bid(20,"2022-05-15",farmer,c);
+			Bid bid = new Bid(20,"2022-05-15");
 		
-		//Bid B = bid.upadate(bid); 
+		
 		Mockito.when(bidRepo.findById(20)).thenReturn(Optional.of(bid));
 		Mockito.when(bidRepo.save(bid)).thenReturn(bid);
-		//bid.setBidId(20);
-		//bid.setDateOfBidding("2021-05-15");
+
 		Bid persistedBid = bidService.update(bid);
 		assertEquals("2022-05-15",persistedBid.getDateOfBidding());
 	}

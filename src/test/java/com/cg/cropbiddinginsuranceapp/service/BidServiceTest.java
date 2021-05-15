@@ -58,7 +58,7 @@ IBidService bidService;
 	}
 	
 	@Test
-	//@Disabled
+	@Disabled
 	void testDeleteBid() {
 		Bid bid = bidService.deleteByBidId(1001);
 		assertEquals(1001,bid.getBidId());

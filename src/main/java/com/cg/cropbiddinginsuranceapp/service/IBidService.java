@@ -11,7 +11,6 @@ public interface IBidService {
 
 	Bid findByBidId(int id);
 	List<Bid> findAll();
-	//Bid deleteById(int id);
 	Bid update(Bid bid);
 	Bid save( Bid bid);
 	Bid deleteByBidId(int id);

@@ -10,7 +10,7 @@ import com.cg.cropbiddinginsuranceapp.entity.Bid;
 import com.cg.cropbiddinginsuranceapp.repository.IBidRepository;
 
 @Service
-public class BidSeviceImpl implements IBidService {
+public class BidServiceImpl implements IBidService {
 
 	@Autowired
 	IBidRepository bidRepo;
