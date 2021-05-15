@@ -30,6 +30,7 @@ class CropServiceTest {
 	}
 	
 	@Test
+	@Disabled
 	void testUpdate() {
 		Crop c=new Crop(101, "food", "wheat", "clayloam", 1500.0,80.0);
 		Crop crop=cs.save(c);
@@ -39,12 +40,14 @@ class CropServiceTest {
 	}
 	
 	@Test
+	@Disabled
 	void testViewAll(){
 		List<Crop> crop=cs.retrieveAllCrops();
 		assertEquals(crop.size(),crop.size());
 	}
 	
 	@Test
+	@Disabled
 	void testViewAllById(){
 		Crop crop=cs.retrieveCropById(105);
 		assertEquals("corn",crop.getCropName());
@@ -58,12 +61,14 @@ class CropServiceTest {
 	}
 	
 	@Test
+	@Disabled
 	void testViewAllByName(){
 		Crop crop=cs.getByCropName("rice");
 		assertEquals("rice",crop.getCropName());
     }
 	
 	@Test
+	@Disabled
 	void testUpdateStatus(){
 		Crop crop=cs.retrieveCropById(107);
 		crop.setCvStatus(CropVerificationStatus.APPROVED);

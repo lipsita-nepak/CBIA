@@ -10,7 +10,7 @@ import com.cg.cropbiddinginsuranceapp.entity.Bid;
 import com.cg.cropbiddinginsuranceapp.repository.IBidRepository;
 
 @Service
-public class BidSeviceImpl implements IBidService {
+public class BidServiceImpl implements IBidService {
 
 	@Autowired
 	IBidRepository bidRepo;
@@ -36,7 +36,6 @@ public class BidSeviceImpl implements IBidService {
 		if(!opt.isPresent()) {
 			return null;
 		}
-		
 		return opt.get();
 	}
 
@@ -46,6 +45,8 @@ public class BidSeviceImpl implements IBidService {
 	
 		bid1.setBidId(bid.getBidId());
 		bid1.setDateOfBidding(bid.getDateOfBidding());
+		bid1.setCrop(bid.getCrop());
+		bid.setFarmer(bid.getFarmer());
 		return bidRepo.save(bid1);
 	}
 

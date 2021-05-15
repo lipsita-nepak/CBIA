@@ -1,4 +1,4 @@
-package com.cg.cropbiddinginsuranceapp.service;
+package com.cg.cropbiddinginsuranceapp.repository;
 
 import java.util.List;
 
@@ -10,9 +10,14 @@ import com.cg.cropbiddinginsuranceapp.entity.Bid;
 public interface IBidService {
 
 	Bid findByBidId(int id);
-     List<Bid> findAll();
- 	Bid update(Bid bid);
- 	Bid save( Bid bid);
-    Bid deleteByBidId(int id);
+	List<Bid> findAll();
+	//Bid deleteById(int id);
+	Bid update(Bid bid);
+	Bid save( Bid bid);
+	Bid deleteByBidId(int id);
+	
+	
+	
+	
 	
 }
