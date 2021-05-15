@@ -19,7 +19,7 @@ class BidderServiceTest {
 	@Test
 	@Disabled
 	void testAddBidder() {
-		Bidder bidder=new Bidder();
+		
 		
 		Address homeAddress=new Address("888","yamgal","Hyd","Telangana","501510");
 		Address bankAddress=new Address("8888","lbnagar","hyd","Telangana","502001");
@@ -29,16 +29,9 @@ class BidderServiceTest {
 		
 		Account bankDetails=new Account(99);
 		bankDetails.setBank(bank);
-		
-		bidder.setAadharNumber("123456");
-		bidder.setContactNumber("9876543210");
-		bidder.setEmailId("abc@gmail.com");
-		bidder.setName("sam");
-		bidder.setPanNumber("67890");
-		bidder.setTraderlicence("licenseA");
+		Bidder bidder=new Bidder("abc","sam","12345","abc@gmail.com","12345","xyz");
 		bidder.setBankDetails(bankDetails);
 		bidder.setHomeAddress(homeAddress);
-		
 		
 		Bidder persistedBidder=bidService.addBidder(bidder);
 		assertEquals("sam",persistedBidder.getName());
@@ -51,7 +44,6 @@ class BidderServiceTest {
 	@Disabled
 	void testUpdateBidder() {
 		
-		Bidder bidder=new Bidder();
 		
 		Address homeAddress=new Address("999","yamgal","Hyd","Telangana","501510");
 		Address bankAddress=new Address("9999","lbnagar","hyd","Telangana","502001");
@@ -62,13 +54,8 @@ class BidderServiceTest {
 		Account bankDetails=new Account(999);
 		bankDetails.setBank(bank);
 		
-		bidder.setAadharNumber("123456");
-		bidder.setContactNumber("9876543210");
-		bidder.setEmailId("abc@gmail.com");
-		bidder.setName("Pranil");
-		bidder.setUserId(3);
-		bidder.setPanNumber("67890");
-		bidder.setTraderlicence("licenseA");
+		Bidder bidder=new Bidder("abc","Pranil","12345","abc@gmail.com","12345","xyz");
+		bidder.setUserId(1);
 		bidder.setBankDetails(bankDetails);
 		bidder.setHomeAddress(homeAddress);
 		
@@ -78,10 +65,9 @@ class BidderServiceTest {
 	}
 	
 	@Test
-	@Disabled
 	void testDeleteBidder() {
-		Bidder bidder = bidService.deleteBidder(4);
-		assertEquals(4, bidder.getUserId());
+		Bidder bidder = bidService.deleteBidder(1);
+		assertEquals(1, bidder.getUserId());
 		
 	}
 	
@@ -97,7 +83,7 @@ class BidderServiceTest {
 	@Test
 	@Disabled
 	void testRetrieveBidderById() throws BidderNotFoundException {
-		Bidder bidder = bidService.retrieveBidderById(3);
+		Bidder bidder = bidService.retrieveBidderById(1);
 		assertEquals("Pranil",bidder.getName());
 		
 	}

@@ -30,6 +30,8 @@ public class BiddingServiceImpl implements IBiddingService{
 	public Bidding updateBiddingStatus(int id,Bidding bidding) {
 		Bidding bid=bdao.findById(id).get();
 		bid.setBidStatus(bidding.getBidStatus());
+		bid.setBidder(bidding.getBidder());
+		bid.setBid(bidding.getBid());
 		return bdao.save(bid);
 	}
 
