@@ -1,4 +1,4 @@
-package com.cg.bidlibrary.service;
+package com.cg.cropbiddinginsuranceapp.service;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -14,70 +15,157 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import com.cg.bidlibrary.entities.Bid;
-import com.cg.bidlibrary.repository.IBidRepository;
+import com.cg.cropbiddinginsuranceapp.entity.Account;
+import com.cg.cropbiddinginsuranceapp.entity.Address;
+import com.cg.cropbiddinginsuranceapp.entity.Bank;
+import com.cg.cropbiddinginsuranceapp.entity.Bid;
+import com.cg.cropbiddinginsuranceapp.entity.Crop;
+import com.cg.cropbiddinginsuranceapp.entity.Farmer;
+import com.cg.cropbiddinginsuranceapp.repository.IBidRepository;
 
 @ExtendWith(SpringExtension.class)
 class BidServiceMockitoTest {
-		// @InjectMock - injects bidService and inject dependent classes/interfaces 
-		//that are annotated with @Mock
-	
+		
 	@InjectMocks
-	BidSeviceImpl bidService; 
+	BidServiceImpl bidService; 
 	
-	// @MockBean - injecting external services
-	@MockBean
+		@MockBean
 	IBidRepository bidRepo;
-	//Initialization of MockTest
 	
 	@BeforeEach
 	void init() {
 	MockitoAnnotations.openMocks(this);
 	}
-	
 	@Test
+	
 	void testCreateBid() {
-			Bid bid = new Bid();
+Farmer farmer = new Farmer("Preeti","6703323213","preeti@gmail.com","2133 4523 2111","LLM121");
+		
+		Address homeAddress=new Address("103","G-Nagar","Noida","Delhi","760007");
+		Address farmAddress=new Address("203","H-Nagar","Noida","Delhi","760008");
+		Address bankAddress=new Address("303","I-Nagar","Noida","Delhi","760009");
+		
+
+		Bank bank=new Bank(403,"HDFC Bank","1CD21");
+		bank.setAddress(bankAddress);
+
+		Account account=new Account(1986452177);
+		account.setBank(bank);
+		
+		farmer.setHomeAddress(homeAddress);
+		farmer.setFarmAddress(farmAddress);
+		farmer.setBankDetails(account);
+		Crop c=new Crop(104, "cash", "paddy", "clayloam", 1800.0,50.0);
+			Bid bid = new Bid(1001,"2022-05-15");
+			
 			Mockito.when(bidRepo.save(bid)).thenReturn(bid);
-			bid.setBidId(1001);
-			bid.setDateOfBidding("2022-05-15");
 			Bid persistedBid = bidService.save(bid);
 			assertEquals(1001,persistedBid.getBidId());
 	}
 	@Test
 	void testFindByBidId() {
+		 Farmer farmer = new Farmer("Preeti","6703323213","preeti@gmail.com","2133 4523 2111","LLM121");
+			
+			Address homeAddress=new Address("103","G-Nagar","Noida","Delhi","760007");
+			Address farmAddress=new Address("203","H-Nagar","Noida","Delhi","760008");
+			Address bankAddress=new Address("303","I-Nagar","Noida","Delhi","760009");
+			
+
+			Bank bank=new Bank(403,"HDFC Bank","1CD21");
+			bank.setAddress(bankAddress);
+
+			Account account=new Account(1986452177);
+			account.setBank(bank);
+			
+			farmer.setHomeAddress(homeAddress);
+			farmer.setFarmAddress(farmAddress);
+			farmer.setBankDetails(account);
+			Crop c=new Crop(104, "cash", "paddy", "clayloam", 1800.0,50.0);
 		Bid bid = new Bid(20,"2022-05-15");
 		Mockito.when(bidRepo.findById(20)).thenReturn(Optional.of(bid));
-		//bid.setBidId(1001);
-	//	bid.setDateOfBidding("2022-05-15");
+		
 		Bid persistedBid = bidService.findByBidId(20);
 		assertEquals(20,persistedBid.getBidId());
 }
 	@Test
+	
 	void testDeleteBid() {
+	Farmer farmer = new Farmer("Preeti","6703323213","preeti11@gmail.com","2133 4523 2111","LLM121");
+		
+		Address homeAddress=new Address("103","G-Nagar","Noida","Delhi","760007");
+		Address farmAddress=new Address("203","H-Nagar","Noida","Delhi","760008");
+		Address bankAddress=new Address("303","I-Nagar","Noida","Delhi","760009");
+		
+
+		Bank bank=new Bank(403,"HDFC Bank","1CD21");
+		bank.setAddress(bankAddress);
+
+		Account account=new Account(1986452177);
+		account.setBank(bank);
+		
+		farmer.setHomeAddress(homeAddress);
+		farmer.setFarmAddress(farmAddress);
+		farmer.setBankDetails(account);
+		Crop c=new Crop(104, "cash", "paddy", "clayloam", 1800.0,50.0);
 		Bid bid = new Bid(20,"2022-05-15");
-		//bidService.deleteByBidId(1001);
+		
 		Mockito.when(bidRepo.findById(20)).thenReturn(Optional.of(bid));
-		//bidRepo.deleteById(20);
-		//Bid persistedBid = bidService.deleteByBidId(20);
-		bid.deleteBid(20);
+	
+		Bid persistedBid = bidService.deleteByBidId(20);
 		assertEquals(20,bid.getBidId());
 		
 }
 	@Test
+	
 	void testUpdateBid() {
-		Bid bid = new Bid(20,"2022-05-15");
+		
+		 Farmer farmer = new Farmer("Preeti","6703323213","preeti11@gmail.com","2133 4523 2111","LLM121");
+			
+			Address homeAddress=new Address("103","G-Nagar","Noida","Delhi","760007");
+			Address farmAddress=new Address("203","H-Nagar","Noida","Delhi","760008");
+			Address bankAddress=new Address("303","I-Nagar","Noida","Delhi","760009");
+			
+
+			Bank bank=new Bank(403,"HDFC Bank","1CD21");
+			bank.setAddress(bankAddress);
+
+			Account account=new Account(1986452177);
+			account.setBank(bank);
+			
+			farmer.setHomeAddress(homeAddress);
+			farmer.setFarmAddress(farmAddress);
+			farmer.setBankDetails(account);
+			Crop c=new Crop(104, "cash", "rice", "clayloam", 1800.0,50.0);
+			Bid bid = new Bid(20,"2022-05-15");
+		
+		
 		Mockito.when(bidRepo.findById(20)).thenReturn(Optional.of(bid));
 		Mockito.when(bidRepo.save(bid)).thenReturn(bid);
-		Bid B = bid.upadate(bid); 
-		//bid.setBidId(20);
-		//bid.setDateOfBidding("2021-05-15");
+
 		Bid persistedBid = bidService.update(bid);
 		assertEquals("2022-05-15",persistedBid.getDateOfBidding());
 	}
 	
 	@Test
+	
 	void testRetrieveBid() {
+		 Farmer farmer = new Farmer("Preeti","6703323213","preeti@gmail.com","2133 4523 2111","LLM121");
+			
+			Address homeAddress=new Address("103","G-Nagar","Noida","Delhi","760007");
+			Address farmAddress=new Address("203","H-Nagar","Noida","Delhi","760008");
+			Address bankAddress=new Address("303","I-Nagar","Noida","Delhi","760009");
+			
+
+			Bank bank=new Bank(403,"HDFC Bank","1CD21");
+			bank.setAddress(bankAddress);
+
+			Account account=new Account(1986452177);
+			account.setBank(bank);
+			
+			farmer.setHomeAddress(homeAddress);
+			farmer.setFarmAddress(farmAddress);
+			farmer.setBankDetails(account);
+			Crop c=new Crop(104, "cash", "paddy", "clayloam", 1800.0,50.0);
 		List<Bid> bid = bidService.findAll();
 		int size = bid.size();
 		assertEquals(size,bid.size());
