@@ -33,8 +33,7 @@ public class BidderServiceImpl implements IBidderService {
 		bid.setHomeAddress(bidder.getHomeAddress());
 		bid.setName(bidder.getName());
 		bid.setPanNumber(bidder.getPanNumber());
-		bid.setTraderlicence(bidder.getTraderlicence());
-		
+		bid.setTraderLicence(bidder.getTraderLicence());
 		
 		return bidRepo.save(bid);
 	}

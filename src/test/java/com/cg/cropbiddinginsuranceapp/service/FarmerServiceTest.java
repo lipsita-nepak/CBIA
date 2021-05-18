@@ -23,7 +23,7 @@ class FarmerServiceTest {
 	
 
 	@Test
-	//@Disabled
+	@Disabled
 	void testAddFarmer() {
 		/*Farmer farmer = new Farmer("Naira Goenka","6703321453","naira@gmail.com","2133 1233 2111","ABC121");
 	
