@@ -1,13 +1,13 @@
 package com.cg.cropbiddinginsuranceapp.entity;
 
-public class BidderErrorResponse {
+public class PersonErrorResponse {
 	private int status;
 	private String message;
 	private long timeStamp;
 	
-	public BidderErrorResponse() {}
+	public PersonErrorResponse() {}
 	
-	public BidderErrorResponse(int status, String message, long timeStamp) {
+	public PersonErrorResponse(int status, String message, long timeStamp) {
 		super();
 		this.status = status;
 		this.message = message;

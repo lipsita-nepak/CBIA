@@ -5,17 +5,17 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import com.cg.cropbiddinginsuranceapp.entity.BidderErrorResponse;
+import com.cg.cropbiddinginsuranceapp.entity.PersonErrorResponse;
 
 
 
 @ControllerAdvice
-public class BidderExceptionHandler {
+public class PersonExceptionHandler {
 
 	@ExceptionHandler
-	public ResponseEntity<BidderErrorResponse> handleException(BidderNotFoundException b)
+	public ResponseEntity<PersonErrorResponse> handleException(PersonNotFoundException b)
 	{
-		BidderErrorResponse error=new BidderErrorResponse();
+		PersonErrorResponse error=new PersonErrorResponse();
 		error.setStatus(HttpStatus.NOT_FOUND.value());
 		error.setMessage(b.getMessage());
 		error.setTimeStamp(System.currentTimeMillis());
@@ -23,9 +23,9 @@ public class BidderExceptionHandler {
 	}
 	
 	@ExceptionHandler
-	public ResponseEntity<BidderErrorResponse> handleException(Exception b)
+	public ResponseEntity<PersonErrorResponse> handleException(Exception b)
 	{
-		BidderErrorResponse error=new BidderErrorResponse();
+		PersonErrorResponse error=new PersonErrorResponse();
 		error.setStatus(HttpStatus.BAD_REQUEST.value());
 		error.setMessage("Bad Request");
 		error.setTimeStamp(System.currentTimeMillis());

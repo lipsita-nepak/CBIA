@@ -65,25 +65,24 @@ class BidderServiceTest {
 	}
 	
 	@Test
+	@Disabled
 	void testDeleteBidder() {
-		Bidder bidder = bidService.deleteBidder(1);
-		assertEquals(1, bidder.getUserId());
+		Bidder bidder = bidService.deleteBidder(4);
+		assertEquals(4, bidder.getUserId());
 		
 	}
 	
 	@Test
-	@Disabled
 	void testRetrieveAllBidders() {
 		List<Bidder> bidder = bidService.retrieveAllBidders();
-		//int size=bidder.size();
-		assertEquals(2, bidder.size());
+		int size=bidder.size();
+		assertEquals(size, bidder.size());
 		
 	}
 	
 	@Test
-	@Disabled
-	void testRetrieveBidderById() throws BidderNotFoundException {
-		Bidder bidder = bidService.retrieveBidderById(1);
+	void testRetrieveBidderById() throws PersonNotFoundException {
+		Bidder bidder = bidService.retrieveBidderById(3);
 		assertEquals("Pranil",bidder.getName());
 		
 	}

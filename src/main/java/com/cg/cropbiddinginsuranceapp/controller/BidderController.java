@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cg.cropbiddinginsuranceapp.entity.*;
 import com.cg.cropbiddinginsuranceapp.service.*;
 import com.cg.cropbiddinginsuranceapp.controller.BidderController;
-import com.cg.cropbiddinginsuranceapp.exception.BidderNotFoundException;
+import com.cg.cropbiddinginsuranceapp.exception.PersonNotFoundException;
 import com.cg.cropbiddinginsuranceapp.service.IBidderService;
 
 @RestController
@@ -34,7 +34,7 @@ public class BidderController {
 		logger.info("Bidder Service Instantiated");
 		if(bidService.retrieveBidderById(id)==null)
 		{
-			throw new BidderNotFoundException("Bidder not found");
+			throw new PersonNotFoundException("Bidder not found");
 		}
 		return bidService.retrieveBidderById(id);
 	}

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.cropbiddinginsuranceapp.entity.Farmer;
-import com.cg.cropbiddinginsuranceapp.exception.FarmerNotFoundException;
+import com.cg.cropbiddinginsuranceapp.exception.PersonNotFoundException;
 import com.cg.cropbiddinginsuranceapp.service.IFarmerService;
 
 
@@ -32,7 +32,7 @@ public class FarmerController {
 	@GetMapping("/farmer/{id}")
 	public Farmer retrieveFarmerById(@PathVariable("id") int userId) {
 		if(farmerService.retrieveFarmerById(userId) == null) {
-			throw new FarmerNotFoundException("Farmer not found with given id: "+userId);
+			throw new PersonNotFoundException("Farmer not found with given id: "+userId);
 		}
 		return farmerService. retrieveFarmerById(userId);
 	}
